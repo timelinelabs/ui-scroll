@@ -4,7 +4,7 @@
  * Version: 1.3.2 -- 2015-10-27T14:48:21.672Z
  * License: MIT
  */
- 
+
 
  (function () {
 'use strict';
@@ -512,7 +512,6 @@ angular.module('ui.scroll', []).directive('uiScrollViewport', function() {
                     return;
                   }
                   if (result.length < bufferSize) {
-                    eof = true;
                     builder.bottomPadding(0);
                   }
                   if (result.length > 0) {
@@ -522,7 +521,9 @@ angular.module('ui.scroll', []).directive('uiScrollViewport', function() {
                       ++next;
                       insertItem('append', item);
                     }
-                  }
+                  } else {
+ +                    eof = true;
+                    }
                   return adjustBufferAfterFetch(rid);
                 });
               }
